@@ -3,7 +3,7 @@ import {useTypewriter, Cursor} from 'react-simple-typewriter'
 import { io } from "socket.io-client";
 import './style.css'
 
-const socket = io("https://followup-zp4v.onrender.com/terminal")
+const socket = io("wss://followup-zp4v.onrender.com/terminal")
 
 socket.on("connect", () =>{
   console.log("connected")
@@ -86,7 +86,7 @@ function App() {
   useEffect(() =>{
       socket.on("send", (data) =>{
         console.log(data)
-        fetch("/terminal", {
+        fetch("https://followup-zp4v.onrender.com/terminal", {
           method: "GET",
         })
         .then((response) => response.json(""))
@@ -103,7 +103,7 @@ function App() {
     console.log("posting")
 
     // fetches api data by going into the post method and giving the content type headers so flask knows to get the json that i sent with the body
-    fetch("/terminal", {
+    fetch("https://followup-zp4v.onrender.com/terminal", {
       method: "POST",
       headers : {'Content-Type' : 'application/json'}, // must have so flask knows it be json
       body: JSON.stringify(input.value)
