@@ -3,8 +3,7 @@ import { Rect, loadImage, resizeCanvas } from "./helpers.js";
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext('2d');
 
-const socket = io("https://followup-zp4v.onrender.com/game/")
-
+const socket = io('wss://followup-zp4v.onrender.com', { transports: ['websocket'] });
 
 var background;
 loadImage("../static/assets/Lv1_BG1.png", function(image){
