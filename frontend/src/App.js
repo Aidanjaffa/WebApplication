@@ -3,7 +3,7 @@ import {useTypewriter, Cursor} from 'react-simple-typewriter'
 import { io } from "socket.io-client";
 import './style.css'
 
-const socket = io("http://127.0.0.1:5000/terminal")
+const socket = io("https://followup-zp4v.onrender.com/terminal")
 
 socket.on("connect", () =>{
   console.log("connected")
