@@ -39,4 +39,4 @@ tzdata==2024.1
 urllib3==1.26.15
 Werkzeug==3.0.3
 wsproto==1.2.0
-eventlet
+eventlet==3.1.1
