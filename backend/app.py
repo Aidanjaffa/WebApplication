@@ -9,7 +9,7 @@ import threading
 import signal
 
 stop_thread = False
-send_list = []
+send_list = [["awfegshdh", "fsadgsf"]]
 console_messages = []
 
 message = "Hi My name is aidan, i made an application with you, i just wanted to follow up on my application and see how everything is going"

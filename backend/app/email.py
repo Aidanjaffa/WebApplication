@@ -10,7 +10,7 @@ send_list = []
 console_messages = []
 message = "Hi My name is aidan, i made an application with you, i just wanted to follow up on my application and see how everything is going"
 
-loggedIn = False
+loggedIn = False 
 sender = ""
 lock = threading.Lock()
 server = smtplib.SMTP_SSL("smtp.gmail.com", 465)

@@ -3,16 +3,19 @@
     overflow-x: hidden;
 }
 
-body{
+#root{
+    height: 100%;
+}
+
+html, body {
+    height: 100%;
     margin: 0;
-    height: 100vh;
 }
 
 .container{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     width: 100%;
     height: auto;
     top: 0%;
@@ -27,12 +30,10 @@ body{
     height: 60vh;
     overflow: scroll;
     overflow-x: hidden;
-    top: 150px;
 }
 
 .header{
     border-bottom: 1px solid black;
-    top: 120px;
     height: 4%; 
     background-color: rgb(49, 49, 49); 
     border-top-left-radius: 6px; 
@@ -42,9 +43,8 @@ body{
 }
 
 .window{
-    width: 70vw;
+    width: 100%;
     display: flex;
-    position: absolute;
 }
 
 .animated{
@@ -55,7 +55,7 @@ body{
 
 .animated.visible{
     opacity: 1;
-    transform: translate(21%);
+    transform: translate(0%);
     transition: opacity 1s, transform 1s;
 }
 
@@ -67,22 +67,37 @@ body{
 .tag{
     width: 30px;
     height: 80px;
-    margin-left: auto;
+    right: 0;
     background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
-    left: 0px;
+    position: fixed;
     top: 100px;
     cursor: pointer;
     opacity: 0;
     user-select: none;
+    z-index: 1;
 }
 
 .text-box{
     position: relative;
+}
+
+.side-bar{
+    width: 20%;
+}
+
+.icon-container{
+    position: fixed;
+    width: inherit;
+    height: 100%;
+    background-color: black;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-right: 1px solid white;
+    overflow-wrap: anywhere;
 }
 
 input{
@@ -113,34 +128,85 @@ a{
     font-size: 22px;
 }
 
-nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: black;
-    border-bottom: 1px solid rgb(42, 42, 42);
-    box-shadow: 3px 0px 12px 5px rgb(44, 44, 44);
-    font-family: "Cabin Sketch", serif;
-    padding: 10px;
-    user-select: none;
-}
-
-nav h1{
-    cursor: pointer;
-    font-size: 35px;
-    margin: 0;
-}
-
 h1{
     color: white;
     font-family: "Cabin Sketch", serif;
 }
 
-.projects{
-    
+h4{
+    color: white;
+    font-family: "Cabin Sketch", serif;
+    font-size: 17px;
+}
+
+h3{
+    color: white;
+    font-family: "Cabin Sketch", serif;
+    font-size: 25px;  
+    text-decoration: underline dashed;
+    text-underline-offset: 5px;
+}
+
+h2{
+    margin-right: 10px;
+    text-align: center;
+    padding: 7px;
+    color: white;
+    font-family: "Cabin Sketch", serif;
+    transition: 0.2s;
+}
+
+h2:hover{
+    font-size: 27px;
+    background-color: rgba(107, 107, 107, 0.4);
+    cursor: pointer;
+    margin: 0;
+    transition: 0.2s;
+}
+
+p{
+    color: white;
+    font-family: "Cabin Sketch", serif;
+    margin-left: 7px;
 }
 
 .card{
-    margin-bottom: auto;
-    border: 4px solid white;
+    margin-bottom: 40px;
+    margin-top: 0px;
+    border-radius: 15px;
+    margin-left: 50px;
+    width: 70vw;
+    overflow: hidden;
+}
+
+.cards-div{
+    height: fit-content;
+    transition: 0.5s;
+}
+
+.tech{
+    text-align: center;
+    padding: 10px;
+    margin: 15px;
+    display: inline;
+    border-radius: 20px;
+    background-color: rgba(84, 84, 84, 0.5);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.tech:hover{
+    font-size: 20px;
+    transition: 0.5s;
+    background-color: rgba(84, 84, 84, 0.3);
+}
+
+.tech-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row{
+    display: flex;
 }
