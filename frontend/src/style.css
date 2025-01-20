@@ -30,11 +30,13 @@ html, body {
     height: 60vh;
     overflow: scroll;
     overflow-x: hidden;
+    top: 150px;
 }
 
 .header{
     border-bottom: 1px solid black;
-    height: 4%; 
+    top: 120px;
+    height: 30px; 
     background-color: rgb(49, 49, 49); 
     border-top-left-radius: 6px; 
     border-top-right-radius: 6px; 
@@ -43,9 +45,12 @@ html, body {
 }
 
 .window{
-    width: 100%;
+    width: 70vw;
+    left: 200px;
     display: flex;
+    position: absolute;
 }
+
 
 .animated{
     opacity: 0;
