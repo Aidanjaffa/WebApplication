@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { io } from "socket.io-client";
 import './style.css'
 
-const socket = io("wss://127.0.0.1:5000/terminal", {
+const socket = io("wss://followup-zp4v.onrender.com/terminal", {
   transports: ["websocket"], 
   rejectUnauthorized: false, // Required for self-signed certificates
 });

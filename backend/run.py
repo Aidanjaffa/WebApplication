@@ -16,4 +16,4 @@ if __name__ == "__main__":
     print(os.path.exists(cert_file))
     print(os.path.exists(key_file)) 
 
-    app.run(host="0.0.0.0", port=port)
+    eventlet.wsgi.server(eventlet.listen(('0.0.0.0', port)), app)
