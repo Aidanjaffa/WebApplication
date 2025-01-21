@@ -3,9 +3,9 @@ import { Rect, loadImage, resizeCanvas } from "./helpers.js";
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext('2d');
 
-const socket = io('http://localhost:5000/game', {
-    transports: ['websocket'], // Explicitly use WebSocket
-    upgrade: false, // Prevent fallback to polling (optional)
+const socket = io('wss://127.0.0.1:5000/game', {
+    transports: ["websocket"], 
+    rejectUnauthorized: false, 
   });
   
 var background;
