@@ -68,7 +68,7 @@ function App() {
   useEffect(() =>{
       socket.on("send", (data) =>{
         console.log(data)
-        fetch("/terminal", {
+        fetch("https://followup-zp4v.onrender.com/terminal", {
           method: "GET",
         })
         .then((response) => response.json(""))
