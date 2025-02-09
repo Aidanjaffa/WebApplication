@@ -16,14 +16,14 @@ if __name__ == "__main__":
     print(os.path.exists(cert_file))
     print(os.path.exists(key_file)) 
 
-    # eventlet.wsgi.server(eventlet.listen(('0.0.0.0', port)), app)
+    eventlet.wsgi.server(eventlet.listen(('0.0.0.0', port)), app)
 
-    eventlet.wsgi.server(
-         eventlet.wrap_ssl(
-             eventlet.listen(('0.0.0.0', port)),
-             certfile=cert_file,
-             keyfile=key_file,
-             server_side=True
-         ),
-         app
-     )
+    # eventlet.wsgi.server(
+    #      eventlet.wrap_ssl(
+    #          eventlet.listen(('0.0.0.0', port)),
+    #          certfile=cert_file,
+    #          keyfile=key_file,
+    #          server_side=True
+    #      ),
+    #      app
+    #  )
