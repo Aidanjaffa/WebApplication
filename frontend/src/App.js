@@ -4,7 +4,7 @@ import './style.css'
 
 const socket = io("wss://followup-zp4v.onrender.com/terminal", {
   transports: ["websocket"], 
-  rejectUnauthorized: false, // Required for self-signed certificates
+  rejectUnauthorized: false,
 });
 
 

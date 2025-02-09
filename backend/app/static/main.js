@@ -3,13 +3,13 @@ import { Rect, loadImage, resizeCanvas } from "./helpers.js";
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext('2d');
 
-const socket = io('wss://followup-zp4v.onrender.com/game', {
+const socket = io('wss://127.0.0.1:5000/game', { // socket connection
     transports: ["websocket"], 
     rejectUnauthorized: false, 
   });
   
 var background;
-loadImage("../static/assets/Lv1_BG1.png", function(image){
+loadImage("../static/assets/Lv1_BG1.png", function(image){ // loading background image
     background = image;
     requestAnimationFrame(game);
 })
@@ -41,36 +41,48 @@ socket.on("playerUpdate", (data) => {
     }
 });
 
-var movement = 0;
+var movement = [0, 0];
 window.addEventListener("keydown", keypress);
 window.addEventListener("keyup", keypress);
 function keypress(event){
+    console.log(event);
     if (event.type === "keydown"){
         switch (event.key){
             case "d":
-                movement = 1;
+                movement[0] = 1;
                 break;
             case "a":
-                movement = -1;
+                movement[0] = -1;
                 break;
+            case "w":
+                movement[1] = -1;
+                break
+            case "s":
+                movement[1] = 1;
+                break
             default:
-                movement = 0;
+                movement[0] = 0;
         };
         players[id].pos[0] += movement;
     }
     if (event.type === "keyup"){
         switch (event.key){
             case "d":
-                movement = 0;
+                movement[0] = 0;
                 break;
             case "a":
-                movement = 0;
+                movement[0] = 0;
                 break;
+            case "w":
+                movement[1] = 0;
+                break
+            case "s":
+                movement[1] = 0;
+                break
             default:
                 movement = 0;
         };
     }
-    socket.emit("playerUpdate", { "player_data" : players[id], "movement" : movement});
 }
  
 function drawMap(){
@@ -91,6 +103,8 @@ function game(){
     c.clearRect(0, 0, canvas.width, canvas.height);
     if (background) c.drawImage(background, 0, 0, canvas.width, canvas.height);     // background image
     if (map) drawMap(); // map drawing
+
+    socket.emit("playerUpdate", { "player_data" : players[id], "movement" : movement});
 
     for (let i in players){
         let rect = new Rect(players[i].pos[0], players[i].pos[1], players[i].color);
