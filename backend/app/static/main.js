@@ -3,7 +3,7 @@ import { Rect, loadImage, resizeCanvas } from "./helpers.js";
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext('2d');
 
-const socket = io('wss://followup-zp4v.onrender.com/game', { // socket connection
+const socket = io('wss://127.0.0.1:5000/game', { // socket connection
     transports: ["websocket"], 
     rejectUnauthorized: false, 
   });
@@ -47,6 +47,7 @@ window.addEventListener("keyup", keypress);
 function keypress(event){
     console.log(event);
     if (event.type === "keydown"){
+        players[id].moving = true;
         switch (event.key){
             case "d":
                 movement[0] = 1;
@@ -66,6 +67,7 @@ function keypress(event){
         players[id].pos[0] += movement;
     }
     if (event.type === "keyup"){
+        players[id].moving = false;
         switch (event.key){
             case "d":
                 movement[0] = 0;
@@ -104,7 +106,9 @@ function game(){
     if (background) c.drawImage(background, 0, 0, canvas.width, canvas.height);     // background image
     if (map) drawMap(); // map drawing
 
-    socket.emit("playerUpdate", { "player_data" : players[id], "movement" : movement});
+    if (players[id].moving){
+            socket.emit("playerUpdate", { "player_data" : players[id], "movement" : movement});
+    }
 
     for (let i in players){
         let rect = new Rect(players[i].pos[0], players[i].pos[1], players[i].color);

@@ -1,6 +1,6 @@
 from flask_socketio import SocketIO, join_room, leave_room
 from app.extensions import socket
-from flask import request
+from flask import request, redirect
 from app.game import Player, Map
 from json import JSONEncoder
 @socket.on('connect', namespace="/terminal")
@@ -31,8 +31,14 @@ def playerUpdate(data={}):
         movement = data["movement"] 
         id = data["player_data"]["id"]
         print(movement)
-        players[id].vel = movement
-        players[id].update()
+
+        try:
+            players[id].vel = movement
+            players[id].update()
+        except KeyError:
+            print ("Player ID error! Attempting Reconnect")
+            return redirect("https://localhost:5000/game")
+        
     for p in players.keys(): # iterates through every player object in the dictionary
         players[p].update() # updates each player server side
     playerDict = {key: players[key].__dict__ for key in players.keys()} # updates the dictionary preparing it to be sent to the client

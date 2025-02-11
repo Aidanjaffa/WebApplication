@@ -5,13 +5,19 @@ export class Rect {
     constructor(x, y, colour) {
         this.originalX = x;
         this.originalY = y;
+        this.vel = [0, 0]
         this.width = 20;
         this.height = 20;
         this.color = colour;
+        this.moving = false;
     }
     draw() { 
         c.fillStyle = this.color;
         c.fillRect(this.originalX, this.originalY, this.width, this.height);
+    }
+    update(){
+        this.originalX += this.vel[0];
+        this.originalY += this.vel[1];
     }
 }  
 

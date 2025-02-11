@@ -11,8 +11,6 @@ terminal_blueprint = Blueprint("terminal", __name__, url_prefix="/terminal")
 def api():
     from app.email import loggedIn, login, email_thread, console_messages, send_list
     if request.method == "POST":
-        print("post")
-
         # getting json
         data = request.json
         commands = data.split(" ")
