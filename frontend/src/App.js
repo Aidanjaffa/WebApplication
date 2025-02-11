@@ -85,7 +85,7 @@ function App() {
     console.log("posting")
 
     // fetches api data by going into the post method and giving the content type headers so flask knows to get the json that i sent with the body
-    fetch("https://followup-zp4v.onrender.com/terminal", {
+    fetch("https://followup-zp4v.onrender.com/terminal/", {
       method: "POST",
       headers : {'Content-Type' : 'application/json'}, // must have so flask knows it be json
       body: JSON.stringify(input.value)
