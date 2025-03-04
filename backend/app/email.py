@@ -8,14 +8,14 @@ import time
 stop_thread = False
 send_list = []
 console_messages = []
-message = "Hi My name is aidan, i made an application with you, i just wanted to follow up on my application and see how everything is going"
+message = "Test Message"
 
 loggedIn = False 
 sender = ""
 lock = threading.Lock()
 server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
 
-def login(name, password):
+def login(name, password): 
     global server, loggedIn, sender
     print("login attempt")
     try:
@@ -35,7 +35,7 @@ def email():
         with lock:
             for data in send_list:
                 msg = MIMEText(message)
-                msg["subject"] = "Application follow up"
+                msg["subject"] = "Test"
                 date = data[1]
                 current = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
                 #print(f"waiting to send to {data[0]} at time {date}. Current Time: {current} ")
